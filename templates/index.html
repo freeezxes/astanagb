@@ -1,181 +1,238 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 
 <head>
-    <!-- SEO & базовые мета-теги -->
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Gigabytes — мгновенные гигабайты трафика</title>
-    <meta name="description"
-        content="Купите гигабайты за пару секунд. Быстро, надёжно, без скрытых комиссий — через Telegram-бот.">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://astanagb.ru/">
+    <title>Gigabytes — моментальный интернет-трафик</title>
+    <meta name="description" content="Купите гигабайты за секунды: честная цена, мгновенное подключение.">
     <meta property="og:title" content="Gigabytes — быстрый интернет-трафик">
-    <meta property="og:description" content="Мгновенная покупка гигабайтов по честной цене. Нажмите и подключитесь!">
+    <meta property="og:description" content="Покупайте трафик за 1 клик. Без скрытых комиссий.">
+    <meta property="og:type" content="website">
     <meta property="og:image" content="https://astanagb.ru/og-image.png">
 
-    <!-- Перфоманс -->
-    <link rel="preconnect" href="https://t.me">
+    <!-- Шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 
+    <!-- ===== CSS (≈3 KB) ===== -->
     <style>
-        /* =================== base =================== */
         :root {
-            --accent: #007aff;
-            --accent2: #7b5cff;
-            --dark: #222;
-            --glass-bg: rgba(255, 255, 255, .8);
-            --blur: blur(12px);
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --accent: #00e0ff;
+            /* неоновый голубой */
+            --accent2: #ff5faa;
+            /* розовый */
+            --dark: #0a0a0a;
+            --light: #ffffff;
+            font-family: 'Manrope', system-ui, sans-serif;
         }
 
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box
-        }
-
-        html,
-        body {
-            height: 100%;
+            box-sizing: border-box;
+            margin: 0
         }
 
         body {
-            color: var(--dark);
-            background: linear-gradient(135deg, #e7efff 0%, #eff1ff 30%, #fdfcff 80%);
+            background: var(--dark);
+            color: var(--light);
+            line-height: 1.55;
+            overflow-x: hidden;
             display: flex;
+            flex-direction: column;
+            min-height: 100dvh;
+        }
+
+        /* ===== НЕОНОВЫЕ ВОЛНЫ ===== */
+        .bg {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            pointer-events: none;
+            background: radial-gradient(ellipse at 20% 30%, rgba(0, 224, 255, .35), transparent 60%),
+                radial-gradient(ellipse at 80% 70%, rgba(255, 95, 170, .35), transparent 60%);
+            animation: bgmove 12s linear infinite alternate;
+        }
+
+        @keyframes bgmove {
+            to {
+                background-position: 30% 25%, 70% 75%
+            }
+        }
+
+        header {
+            padding: 18px 5vw;
+            font-weight: 800;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 1.25rem;
-        }
-
-        /* =================== card =================== */
-        .wrap {
-            width: 100%;
-            max-width: 460px;
-            padding: 2.25rem 2rem 1.75rem;
-            border-radius: 18px;
-            background: var(--glass-bg);
-            backdrop-filter: var(--blur);
-            box-shadow: 0 14px 28px rgba(0, 0, 0, .07), 0 10px 10px rgba(0, 0, 0, .04);
             text-align: center;
+            padding: 0 6vw;
         }
 
         h1 {
-            font-size: clamp(1.6rem, 4vw, 2.1rem);
-            font-weight: 700;
-            line-height: 1.25;
-            margin-bottom: .9rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--accent), var(--accent2));
+            background-clip: text;
+            /* стандартное */
+            -webkit-background-clip: text;
+            /* нужно для Chrome / Safari */
+            color: transparent;
+            margin-bottom: 1rem;
         }
 
-        p.lead {
-            font-size: clamp(.95rem, 2.5vw, 1.05rem);
-            margin-bottom: 1.5rem;
+
+        .subtitle {
+            max-width: 38ch;
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            opacity: .85;
+            margin-bottom: 2.4rem;
         }
 
-        /* =================== button ================= */
         .btn {
             display: inline-block;
-            padding: .95rem 2.3rem;
+            padding: 15px 38px;
             border-radius: 999px;
-            background: linear-gradient(135deg, var(--accent), var(--accent2));
-            color: #fff;
-            font-weight: 600;
-            text-decoration: none;
+            background: var(--accent);
+            color: var(--dark);
+            font-weight: 700;
             font-size: 1rem;
-            transition: transform .15s ease, box-shadow .15s ease;
-            box-shadow: 0 6px 12px rgba(123, 92, 255, .3);
+            text-decoration: none;
+            transition: transform .15s, box-shadow .15s;
+            box-shadow: 0 8px 20px rgba(0, 224, 255, .35);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 224, 255, .45);
         }
 
         .btn:active {
-            transform: scale(.97);
+            transform: translateY(1px);
         }
 
-        /* =================== feature list (emoji) === */
-        ul.features {
-            list-style: none;
-            margin: 0 0 1.8rem 0;
-            font-size: .93rem;
-            text-align: left
+        /* ===== FEATURE GRID ===== */
+        .grid {
+            display: grid;
+            gap: 24px;
+            margin: 80px auto 0;
+            max-width: 1100px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            padding: 0 5vw;
         }
 
-        ul.features li {
-            margin: .35rem 0;
-            padding-left: 1.55rem;
-            position: relative;
-            opacity: .9
+        .card {
+            background: rgba(255, 255, 255, .04);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, .07);
+            border-radius: 20px;
+            padding: 28px 22px;
+            text-align: center;
+            transition: background .2s;
         }
 
-        ul.features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
+        .card:hover {
+            background: rgba(255, 255, 255, .07)
+        }
+
+        .card svg {
+            width: 46px;
+            height: 46px;
+            fill: var(--accent);
+            margin-bottom: 14px
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: .4rem;
             font-weight: 600
         }
 
-        /* =================== contacts + links ======= */
-        .contacts {
-            font-size: .85rem;
-            margin-top: 1.8rem;
-            line-height: 1.4;
-            opacity: .9
+        .card p {
+            font-size: .9rem;
+            opacity: .8
         }
 
-        .links {
-            margin-top: .6rem;
-            font-size: .75rem
+        footer {
+            margin-top: auto;
+            padding: 40px 5vw 60px;
+            font-size: .8rem;
+            text-align: center;
+            opacity: .8
         }
 
-        a {
-            color: var(--accent);
-        }
+        @media(max-width:480px) {
+            .grid {
+                margin-top: 60px
+            }
 
-        @media(max-height:620px) {
-            body {
-                align-items: flex-start;
-                padding-top: 2rem
+            .card {
+                padding: 22px 18px
             }
         }
     </style>
-
-    <!-- GA4 + Метрика вставляйте тут -->
 </head>
 
 <body>
-    <div class="wrap">
-        <h1>Гигабайты&nbsp;за&nbsp;секунды</h1>
-        <p class="lead">Покупайте интернет-трафик мгновенно — без скрытых комиссий и бюрократии. Нажмите кнопку и
-            получите гигабайты в Telegram.</p>
 
-        <!-- преимущества -->
-        <ul class="features">
-            <li>Мгновенная активация после оплаты</li>
-            <li>Прозрачная цена&nbsp;– никаких надбавок</li>
-            <li>Поддержка 24/7 прямо в чате</li>
-        </ul>
+    <div class="bg"></div> <!-- анимированный фон -->
 
+    <header>ASTANA GB</header>
+
+    <main>
+        <h1>Гигабайты за 1 клик</h1>
+        <p class="subtitle">Мгновенный доступ к высокоскоростному интернет-трафику. Честная цена, никаких скрытых
+            комиссий.</p>
         <a id="telegramButton" class="btn" href="https://t.me/YourBot" target="_blank" rel="noopener noreferrer">
             Открыть в Telegram
         </a>
 
-        <div class="contacts">
-            +7 777 777-77-77 · hello@astanagb.ru<br>
-            ИП «Astana GB», БИН 000000000000
-        </div>
+        <!-- ===== FEATURE GRID ===== -->
+        <section class="grid">
+            <div class="card">
+                <svg viewBox="0 0 24 24">
+                    <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
+                </svg>
+                <h3>Молниеносно</h3>
+                <p>Трафик активируется сразу после оплаты — без ожиданий.</p>
+            </div>
+            <div class="card">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2l8 4v6c0 5.55-3.84 10.74-8 12-4.16-1.26-8-6.45-8-12V6l8-4z" />
+                </svg>
+                <h3>Надёжно</h3>
+                <p>Платёжные данные шифруются PCI-DSS шлюзом.</p>
+            </div>
+            <div class="card">
+                <svg viewBox="0 0 24 24">
+                    <path d="M2 6h20v12H2z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+                <h3>Честная цена</h3>
+                <p>Фиксированный тариф — без скрытых подписок.</p>
+            </div>
+        </section>
+    </main>
 
-        <div class="links">
-            <a href="/privacy.html" target="_blank">Политика конфиденциальности</a> ·
-            <a href="/offer.html" target="_blank">Публичная оферта</a>
-        </div>
-    </div>
+    <footer>
+        +7 705 883-06-45 · astana.gbb@gmail.com · ИП «ASTANA GB», БИН 070617552200<br>
+        <a href="/privacy" target="_blank">Политика конфиденциальности</a> ·
+        <a href="/offer" target="_blank">Публичная оферта</a>
 
-    <!-- click_telegram событие -->
+        © 2025 Astana GB
+    </footer>
+
+    <!-- Аналитика клика -->
     <script>
         document.getElementById('telegramButton').addEventListener('click', () => {
-            if (typeof gtag === 'function') { gtag('event', 'click_telegram', { event_category: 'cta' }); }
-            if (typeof ym === 'function') { ym(10000001, 'reachGoal', 'click_telegram'); } // замените ID
+            if (typeof gtag === 'function') gtag('event', 'click_telegram');
+            if (typeof ym === 'function') ym(11111111, 'reachGoal', 'click_telegram');
         });
     </script>
 </body>
