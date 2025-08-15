@@ -41,7 +41,7 @@ body{font-size:var(--fs-base);line-height:1.5}
 }
 
 .footer-link{
-  color:var(--accent)
+  color:var(--accent);
 }
 
 .footer-link:focus-visible{
@@ -59,3 +59,4 @@ body{font-size:var(--fs-base);line-height:1.5}
 @media (max-width:480px){
   .hero{padding-top:24px;padding-bottom:24px}
 }
+
