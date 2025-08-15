@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://www.googletagmanager.com">
   <link rel="preconnect" href="https://www.google-analytics.com">
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/base.css">
-  <script defer src="/assets/js/tracking.js"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <script defer src="{{ url_for('static', filename='js/tracking.js') }}"></script>
 
   <style>
     :root {
