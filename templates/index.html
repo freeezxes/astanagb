@@ -10,8 +10,11 @@
     <meta property="og:description" content="Покупайте трафик за 1 клик. Без скрытых комиссий.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://astanagb.ru/og-image.png">
+    <meta name="theme-color" content="#00e0ff">
 
     <!-- Шрифт -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
 
     <!-- ===== CSS (≈3 KB) ===== -->
@@ -63,6 +66,10 @@
             font-weight: 800;
             font-size: 1.1rem;
             text-transform: uppercase;
+        }
+        header a {
+            color: inherit;
+            text-decoration: none;
         }
 
         main {
@@ -183,7 +190,7 @@
 
     <div class="bg"></div> <!-- анимированный фон -->
 
-    <header>ASTANA GB</header>
+    <header><a href="/">ASTANA GB</a></header>
 
     <main>
         <h1>Гигабайты за 1 клик</h1>
@@ -196,21 +203,21 @@
         <!-- ===== FEATURE GRID ===== -->
         <section class="grid">
             <div class="card">
-                <svg viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
                 </svg>
                 <h3>Молниеносно</h3>
                 <p>Трафик активируется сразу после оплаты — без ожиданий.</p>
             </div>
             <div class="card">
-                <svg viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2l8 4v6c0 5.55-3.84 10.74-8 12-4.16-1.26-8-6.45-8-12V6l8-4z" />
                 </svg>
                 <h3>Надёжно</h3>
                 <p>Платёжные данные шифруются PCI-DSS шлюзом.</p>
             </div>
             <div class="card">
-                <svg viewBox="0 0 24 24">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M2 6h20v12H2z" />
                     <circle cx="12" cy="12" r="3" />
                 </svg>
@@ -222,10 +229,10 @@
 
     <footer>
         +7 705 883-06-45 · astana.gbb@gmail.com · ИП «ASTANA GB», БИН 070617552200<br>
-        <a href="/privacy" target="_blank">Политика конфиденциальности</a> ·
-        <a href="/offer" target="_blank">Публичная оферта</a>
+        <a href="/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> ·
+        <a href="/offer" target="_blank" rel="noopener noreferrer">Публичная оферта</a>
 
-        © 2025 Astana GB
+        © <span id="year"></span> Astana GB
     </footer>
 
     <!-- Аналитика клика -->
@@ -234,6 +241,7 @@
             if (typeof gtag === 'function') gtag('event', 'click_telegram');
             if (typeof ym === 'function') ym(11111111, 'reachGoal', 'click_telegram');
         });
+        document.getElementById('year').textContent = new Date().getFullYear();
     </script>
 </body>
 
