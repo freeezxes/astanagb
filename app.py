@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 import os
 
-# serve assets/ under the /assets path so linked CSS/JS resolve
-app = Flask(__name__, static_url_path="/assets", static_folder="assets")
+# serve static files from the default /static path
+app = Flask(__name__)
 
 @app.route("/")
 def index():
