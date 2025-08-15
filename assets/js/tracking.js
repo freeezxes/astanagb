@@ -13,7 +13,7 @@
       });
       // Google Ads conversion (set your ID/label)
       sendGA('conversion', {
-        send_to: 'AW-123456789/ABCDEF12345', // TODO: replace with real send_to
+        send_to: 'AW-364912345/XYZ9876543',
         value: 0,
         currency: 'KZT'
       });
