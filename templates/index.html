@@ -148,7 +148,7 @@
     <div>
       <h1>Гигабайты за 1 клик</h1>
       <p class="subtitle">Мгновенный доступ к высокоскоростному интернет-трафику. Честная цена, никаких скрытых комиссий.</p>
-      <a class="btn-glow" id="tg-btn" href="https://t.me/astana_gb" target="_blank" rel="noopener">Открыть в Telegram</a>
+      <a class="btn-glow" id="tg-btn" href="https://t.me/astana_gb" target="_blank" rel="noopener" aria-label="Открыть Astana GB в Telegram">Открыть в Telegram</a>
     </div>
   </section>
 
@@ -179,8 +179,8 @@
 
   <footer class="container">
     +7 705 883-06-45 · astana.gbb@gmail.com · ИП «ASTANA GB», БИН 070617552200<br>
-    <a href="/privacy" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> ·
-    <a href="/offer" target="_blank" rel="noopener noreferrer">Публичная оферта</a><br>
+    <a class="footer-link" href="{{ url_for('privacy') }}" target="_blank" rel="noopener noreferrer">Политика конфиденциальности</a> ·
+    <a class="footer-link" href="{{ url_for('offer') }}" target="_blank" rel="noopener noreferrer">Публичная оферта</a><br>
     © <span id="year"></span> Astana GB
   </footer>
 
